@@ -7,7 +7,7 @@ public class Quad
     public Mesh mesh;
 
 
-    public Quad (Block.BlockSides side, Vector3 offset)
+    public Quad(Block.BlockSides side, Vector3 offset, MeshUtility.BlockType blockType)
     {
         mesh = new Mesh();
         mesh.name = "Scripted_Quad";
@@ -17,10 +17,10 @@ public class Quad
         Vector2[] uvs = new Vector2[4];
         int[] triangles = new int[6];
 
-        Vector2 uv00 = new Vector2(0, 0);
-        Vector2 uv10 = new Vector2(1, 0);
-        Vector2 uv01 = new Vector2(0, 1);
-        Vector2 uv11 = new Vector2(1, 1);
+        Vector2 uv00 = MeshUtility.blockUvs[(int)blockType, 0];
+        Vector2 uv10 = MeshUtility.blockUvs[(int)blockType, 1];
+        Vector2 uv01 = MeshUtility.blockUvs[(int)blockType, 2];
+        Vector2 uv11 = MeshUtility.blockUvs[(int)blockType, 3];
 
         Vector3 p0 = new Vector3(-.5f, -.5f, .5f) + offset;
         Vector3 p1 = new Vector3(.5f, -.5f, .5f) + offset;
